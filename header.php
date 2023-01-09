@@ -21,14 +21,14 @@
 	<body <?php body_class();?> >
 		<?php
 			global $wp_query;
-			$img = get_post_meta($post->ID, 'lichtenberg_header_img', true);
-			$event_img = get_post_meta($post->ID, '_ad_ev_meta_image_id', true);
+			$img = get_post_meta($post->ID, 'aadh_header_img', true);
+			$event_img = get_post_meta($post->ID, '_ad_ev_meta_image', true);
 			$img_id = !!$event_img ? $event_img : $img;
 	
-			$brightness = get_post_meta($post->ID, 'lichtenberg_brightness', true);
+			$brightness = get_post_meta($post->ID, 'aadh_brightness', true);
 			$brightness = !!$brightness ? (float) $brightness : 0.2;
 
-			$text = get_post_meta($post->ID, 'lichtenberg_title', true);
+			$text = get_post_meta($post->ID, 'aadh_title', true);
 			if (!$text) {
 				$text = "<h1>".the_title('','', false)."</h1>";
 			}

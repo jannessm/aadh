@@ -1,13 +1,13 @@
 <?php
 
 	/*
-		Template Name: Switching Overview
+		Template Name: Single Event
 	*/
 
 	include_once WP_PLUGIN_DIR . '/adventi-events/event.php';
 
 
-	get_header(); ?>
+	get_header();?>
 
 	<div id="content-wrapper">
 		<div id="content">

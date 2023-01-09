@@ -1,7 +1,7 @@
 <?php
 
-add_shortcode('lichtenberg_quick_links', 'lichtenberg_quick_links');
-function lichtenberg_quick_links($atts = [], $content = '', $tag = '') {
+add_shortcode('aadh_quick_links', 'aadh_quick_links');
+function aadh_quick_links($atts = [], $content = '', $tag = '') {
 
     $content = '';
     $counter = 0;
@@ -10,7 +10,7 @@ function lichtenberg_quick_links($atts = [], $content = '', $tag = '') {
         $even = $counter % 2 == 0;
 		$p = get_post($page_id);
 
-        $img = get_post_meta($p->ID, 'lichtenberg_header_img', true);
+        $img = get_post_meta($p->ID, 'aadh_header_img', true);
 		$event_img = get_post_meta($p->ID, '_ad_ev_meta_image', true);
 		$img_id = !!$event_img ? $event_img : $img;
 
@@ -21,7 +21,7 @@ function lichtenberg_quick_links($atts = [], $content = '', $tag = '') {
 		}
 
 
-		$brightness = get_post_meta($p->ID, 'lichtenberg_brightness', true);
+		$brightness = get_post_meta($p->ID, 'aadh_brightness', true);
 		$brightness = !!$brightness ? $brightness : 0.2;
 
         $preload = mt_rand(0,3);
@@ -43,6 +43,75 @@ function lichtenberg_quick_links($atts = [], $content = '', $tag = '') {
 
         $counter++;
     }
+
+    return $content;
+}
+
+add_shortcode('aadh_posts_preview', 'aadh_posts_preview');
+function aadh_posts_preview($atts = [], $content = '', $tag = '') {
+
+    //////////// prepare $atts /////////////////
+    // normalize attribute keys, lowercase
+	$atts = array_change_key_case( (array) $atts, CASE_LOWER );
+
+	// override default attributes with user attributes
+	$atts = shortcode_atts(
+		array(
+			'searchbar' => 'TRUE',
+            'categories' => array_column(get_categories(), 'name'),
+            'delimiter' => ',',
+            'posts_per_page' => 5,
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'date_format' => 'd. M Y, H:m'
+		), $atts, $tag
+	);
+
+    if (is_string($atts['categories'])) {
+        $atts['categories'] = explode($atts['delimiter'], $atts['categories']);
+    }
+
+
+
+    /**************** searchbar ******************/
+    if ($atts['searchbar'] === 'TRUE') {
+        wp_localize_script( 'search', 'myAjax', ['container' => 'addh-search']);
+
+        $content .= '<div class="aadh-search">
+        <input class="aadh-search_bar">
+            <div class="aadh-clear_all" onclick="clear_search()">X</div>
+            <div class="aadh-search_title">Suchen</div>
+        </div>
+        <div class="hash_wrapper">
+        ';
+    
+        foreach($atts['categories'] as $term){
+            $content .= "<div class='aadh-hash'>#".trim($term)."</div>";
+        }
+        
+        $content .= '</div>';
+    }
+
+
+    /**************** previews ******************/
+    $paged = $_GET['paged'] ?? 1;
+    $cat_ids = [];
+
+    foreach ($atts['categories'] as $cat) {
+        array_push($cat_ids, get_cat_id($cat));
+    }
+
+
+    $_nonce = wp_create_nonce( 'paged_posts' );
+    wp_localize_script( 'get_posts', 'args', array_merge([
+        'ajax_url' => admin_url( 'admin-ajax.php' ),
+        'nonce' => $_nonce,
+        'cat_ids' => $cat_ids,
+        'paged' => $paged,
+        'container' => '#previews',
+    ], $atts));
+
+    $content .= '<div id="previews"></div>';
 
     return $content;
 }

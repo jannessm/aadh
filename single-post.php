@@ -1,4 +1,9 @@
-	<?php get_header(); ?>
+	<?php 
+	/*
+		Template Name: Single Post
+	*/
+	get_header();
+	?>
 
 	<div id="content-wrapper">
 	<div id="content">
@@ -21,8 +26,8 @@
 			endif;
 		?>
 		<?php
-		$sidebar = get_post_meta( $post->ID, 'lichtenberg_sidebar', true);
-		var_dump($sidebar);
+		$sidebar = get_post_meta( $post->ID, 'aadh_sidebar', true);
+
 		if (!!$sidebar) {
 			?>
 			<div class="sidebar">

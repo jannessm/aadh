@@ -18,7 +18,7 @@
 		<a href="<?php echo get_home_url() ?>" style="position:relative;z-index:1;"><div id="footer_logo" 
 				style="background-image: url('<?php site_icon_url(); ?>')">
 			</div></a>
-		<!--<?php wp_nav_menu( array( 'menu' => 'footer-menu' , 'theme_location' => 'footer-menu', 'walker' => new WP_Custom_Walker('main-menu', 'main-menu-item', false), 'items_wrap' => '%3$s') );?>-->
+		<?php //wp_nav_menu( array( 'menu' => 'footer-menu' , 'theme_location' => 'footer-menu', 'walker' => new WP_Custom_Walker('main-menu', 'main-menu-item', false), 'items_wrap' => '%3$s') );?>
 		<div id="footer-content">
 			<?php echo $options['text']; ?>
 			<br>

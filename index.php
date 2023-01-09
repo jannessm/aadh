@@ -1,5 +1,4 @@
-<?php 
-	include_once dirname(__FILE__) . '/theme_options/meta_boxes.php';
+<?php
 	get_header(); ?>
 
 	<div id="content-wrapper">

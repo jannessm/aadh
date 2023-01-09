@@ -7,25 +7,14 @@
 
 	<div id="content-wrapper">
 	  <div id="content">
-      <div class="search">
-         <input class="search_bar">
-         <div class="clear_all" onclick="clear_search()">X</div>
-         <div class="search_title">Suchen</div>
-      </div>
-      <div class="hash_wrapper">
-      <?php
-         foreach(get_categories() as $term){
-            echo "<div class='hash'>#".$term->name."</div>";
-         }
-      ?>
-      </div>
+      
 
-      <div id="post_wrapper"></div>
+      <?php the_content(); ?>
 
       </div>
       <?php
-		$sidebar = get_post_meta( $post->ID, 'lichtenberg_sidebar', true);
-		var_dump($sidebar);
+		$sidebar = get_post_meta( $post->ID, 'aadh_sidebar', true);
+
 		if (!!$sidebar) {
 			?>
 			<div class="sidebar">

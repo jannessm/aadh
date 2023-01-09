@@ -4,15 +4,15 @@ var last_page = 0;
 function init_search(){
 	var urlParams = new URLSearchParams(window.location.search);
 	
-	jQuery('.search_bar').bind('keyup', function(){
+	jQuery('.aadh-search_bar').bind('keyup', function(){
 		window.clearTimeout(search_timer);
 		search_timer = window.setTimeout(function(){search()}, 500);
 	});
-	jQuery('.search_bar').bind('input', function(){
+	jQuery('.aadh-search_bar').bind('input', function(){
 		update_search_title();
 	})
-	jQuery('.search_bar').val(decodeURIComponent(urlParams.get('q') || ''));
-	jQuery('.hash').bind('click', function(){
+	jQuery('.aadh-search_bar').val(decodeURIComponent(urlParams.get('posts_page') || ''));
+	jQuery('.aadh-hash').bind('click', function(){
 		add_hash(this.innerText);
 	});
 
@@ -21,7 +21,6 @@ function init_search(){
 }
 
 function search(page_id=undefined){
-	console.log('hi');
 	if (page_id !== undefined && page_id.indexOf('N') >= 0)
 		page_id = last_page + 1;
 	else if (page_id !== undefined && page_id.indexOf('Z') >= 0)

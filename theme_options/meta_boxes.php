@@ -3,7 +3,7 @@
 	add theme option menu to modify the text displayed in the footer
 	*/
 	// Add to the admin_init action hook
-	const META_BOX = 'lichtenberg_';
+	const META_BOX = 'aadh_';
 	abstract class PageMetaBox {
 		const fields = ['header_img', 'brightness', 'event_sidebar', 'title'];
 
@@ -12,7 +12,7 @@
 		 */
 		public static function add() {
 			add_meta_box(
-				'lichtenberg_meta_box',  // Unique ID
+				'aadh_meta_box',  // Unique ID
 				'Theme Einstellungen', 			// Box title
 				[ self::class, 'html' ],    // Content callback, must be of type callable
 			);
