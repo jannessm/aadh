@@ -59,10 +59,11 @@ jQuery(document).ready($ => {
   }
 
   refresh();
-  console.log(args);
+  // console.log(args);
 });
 
 function get_post(post) {
+  console.log(post);
   cats = post.categories.reduce((res, cat) => {
     if (!!cat.name) {
       return `${res}<div class="aadh-hash">#${cat.name}</div>`;
