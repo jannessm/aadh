@@ -2,6 +2,21 @@ let wrapper;
 let queryString;
 let paged;
 
+function getPaged() {
+  queryString = new URLSearchParams(window.location.search);
+  let page = parseInt(queryString.get('paged'));
+  if (!isNaN(page)) {
+	  return page;
+  }
+
+  page = parseInt(window.location.href.replace(/^.*page\/(\d)\/.*/, '$1'));
+  if (!isNaN(page)) {
+	  return page;
+  }
+
+  return parseInt(args.paged);
+}
+
 jQuery(document).ready($ => {
   try {
     if (!args) {
@@ -14,8 +29,8 @@ jQuery(document).ready($ => {
   wrapper = $(args.container);
 
   queryString = new URLSearchParams(window.location.search);
+  paged = getPaged();
 
-  paged = parseInt(queryString.get('paged') || args.paged);
   let query = queryString.get('q') || '';
   parsed_query = parseQuery(query);
   query = parsed_query.query;
@@ -43,7 +58,7 @@ jQuery(document).ready($ => {
 function displayPosts(data) {
   console.log(data);
   queryString = new URLSearchParams(window.location.search);
-  paged = parseInt(queryString.get('paged') || args.paged);
+  paged = getPaged();
   const query = queryString.get('q') || '';
   queryString.set('q', query);
   
@@ -59,6 +74,7 @@ function displayPosts(data) {
     firstPageQuery.set('paged', 1);
     prevPageQuery.set('paged', Math.max(paged - 1, 1));
     nextPageQuery.set('paged', Math.min(paged + 1, data.pages));
+	  console.log(paged + 1, data.pages, Math.min(paged + 1, data.pages))
     lastPageQuery.set('paged', data.pages);
 
     html += `<div class="pagination">\n`;

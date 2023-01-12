@@ -99,7 +99,7 @@ function search(cleared = false) {
 		return;
 
 	// add query to url
-	const urlParams = new URLSearchParams(window.location.search);	
+	const urlParams = new URLSearchParams(window.location.search);
 	urlParams.set('q', query);
 	last_search = query;
 
