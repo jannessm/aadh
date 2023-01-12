@@ -412,7 +412,7 @@ hr{
 		position: relative;
 		display: inline-block;
 	}
-	.aadh-search_bar{
+	.aadh-search-bar{
 		position: relative;
 		z-index: 0;
 		border: none;
@@ -423,7 +423,7 @@ hr{
 		width: 100%;
 		box-sizing: border-box;
 	}
-	.aadh-search_title{
+	.aadh-search-title{
 		position: relative;
 		z-index: -1;
 		color: grey;
@@ -432,11 +432,11 @@ hr{
 		transition: 0.1s ease-in;
 		font-size: 1em;
 	}
-	.aadh-search_active{
+	.aadh-search-non-empty{
 		transform: translateY(-25px) translateX(-45px) scale(0.8);
 		transition: 0.1s ease-in;
 	}
-	.aadh-clear_all{
+	.aadh-clear-all{
 		position: absolute !important;
 		right: 0;
 		width: 20px;
@@ -603,9 +603,6 @@ hr{
 		opacity: 1;
 		transition: 0.2 linear;
 	}
-	.post-preview {
-		/* min-width: 100%; */
-	}
 	.post-preview-meta span {
 		font-style: italic;
 	}
@@ -631,7 +628,10 @@ hr{
 		background-size: contain;
 		background-repeat: no-repeat;
 	}
-	.post-preview-text {
+	.post-preview-text:nth-child(1) {
+		width: 100%;
+	}
+	.post-preview-text:nth-child(2) {
 		width: 50%;
 	}
 	.hash_wrapper{

@@ -78,9 +78,9 @@ function aadh_posts_preview($atts = [], $content = '', $tag = '') {
         wp_localize_script( 'search', 'myAjax', ['container' => 'addh-search']);
 
         $content .= '<div class="aadh-search">
-        <input class="aadh-search_bar">
-            <div class="aadh-clear_all" onclick="clear_search()">X</div>
-            <div class="aadh-search_title">Suchen</div>
+        <input class="aadh-search-bar">
+            <div class="aadh-clear-all" onclick="clear_search()">X</div>
+            <div class="aadh-search-title">Suchen</div>
         </div>
         <div class="hash_wrapper">
         ';

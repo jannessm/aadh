@@ -60,7 +60,7 @@
 			<div id="header-content"><?php echo $text; ?></div>
                         <div id="arrow-down" onclick="scrollDown('#content-wrapper');"></div>
 		</div>
-		<div id="header-collapse-icon" onclick="toggle_collapse()">
+		<div id="header-collapse-icon" onclick="toggle_burger_collapse()">
 			<div class="collapse-icon-top"></div>
 			<div class="collapse-icon-middle"></div>
 			<div class="collapse-icon-bottom"></div>
