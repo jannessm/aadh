@@ -9,10 +9,13 @@ function aadh_paged_posts_handler() {
         'posts_per_page' => $_POST['numberposts'],
         'order' => $_POST['order'],
         'orderby' => $_POST['orderby'],
-        'category__in' => $_POST['categories'],
         'paged' => $_POST['paged'],
         's' => $_POST['query']
     ];
+
+    if (isset($_POST['categories']) && count($_POST['categories']) > 0) {
+        $query['category__in'] = $_POST['categories'];
+    }
 
     $final_posts = [];
     $posts = query_posts($query);
@@ -40,5 +43,5 @@ function aadh_paged_posts_handler() {
 
     $pages = $wp_query->max_num_pages;
     
-    wp_send_json(['posts' => $final_posts, 'pages' => $pages]);
+    wp_send_json(['posts' => $final_posts, 'pages' => $pages, 'categories' => $_POST['categories']]);
 }

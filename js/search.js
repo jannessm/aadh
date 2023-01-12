@@ -104,7 +104,8 @@ function search(cleared = false) {
 	last_search = query;
 
 	const parsed_query = parseQuery(query);
-	categories = parsed_query.categories;
+	categories = parsed_query.categories.length == 0 ? args.cat_ids : parsed_query.categories;
+	console.log(categories);
 	query = parsed_query.query;
 
 	urlParams.set('paged', paged);

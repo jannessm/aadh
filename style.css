@@ -411,6 +411,7 @@ hr{
 		width: 49%;
 		position: relative;
 		display: inline-block;
+		margin-bottom: 42px;
 	}
 	.aadh-search-bar{
 		position: relative;
@@ -602,6 +603,11 @@ hr{
 		flex-direction: column;
 		opacity: 1;
 		transition: 0.2 linear;
+	}
+	.post-preview {
+		margin: 12px;
+    border: 2px solid;
+    padding: 12px;
 	}
 	.post-preview-meta span {
 		font-style: italic;

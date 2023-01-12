@@ -19,7 +19,7 @@ jQuery(document).ready($ => {
   let query = queryString.get('q') || '';
   parsed_query = parseQuery(query);
   query = parsed_query.query;
-  const categories = parsed_query.categories;
+  const categories = parsed_query.categories.length == 0 ? args.cat_ids : parsed_query.categories;
 
   function refresh() {
     $.post(args.ajax_url, {
