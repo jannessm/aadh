@@ -20,7 +20,7 @@
 	function theme_option_footer_page(){
 		global $select_options, $radio_options;
 
-		if( !isset( $_REQUEST['settings-updated'] ))
+		if(!isset( $_REQUEST['settings-updated'] ))
 			$_REQUEST['settings-updated'] = false;
 		?>
 		

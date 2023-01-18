@@ -63,7 +63,7 @@
 		 * @param array  $args   An array of wp_nav_menu() arguments.
 		 * @param int    $id     Current item ID.
 		 */
-		public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		public function start_el( &$output, $item, $depth = 0, $args = [], $id = 0 ) {
 			$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
@@ -83,7 +83,7 @@
 			 * @param int    $depth Depth of menu item. Used for padding.
 			 */
 			$args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
-
+			
 			/**
 			 * Filters the CSS class(es) applied to a menu item's list item element.
 			 *
@@ -166,11 +166,14 @@
 			if($this->upper && $depth == 0)
 				$title = strtoupper($title);
 
-			$item_output = $args->before;
-			$item_output .= '<a'. $attributes .'>';
-			$item_output .= $args->link_before . $title . $args->link_after;
-			$item_output .= '</a></div>';
-			$item_output .= $args->after;
+			$item_output = '';
+			if (gettype($args) !== "array") {
+				$item_output = $args->before;
+				$item_output .= '<a'. $attributes .'>';
+				$item_output .= $args->link_before . $title . $args->link_after;
+				$item_output .= '</a></div>';
+				$item_output .= $args->after;
+			}
 
 			/**
 			 * Filters a menu item's starting output.

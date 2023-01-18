@@ -9,6 +9,9 @@ function aadh_quick_links($atts = [], $content = '', $tag = '') {
     foreach ($atts as $page_id) {
         $even = $counter % 2 == 0;
 		$p = get_post($page_id);
+		if (!$p) {
+			continue;
+		}
 
         $img = get_post_meta($p->ID, 'aadh_header_img', true);
 		$event_img = get_post_meta($p->ID, '_ad_ev_meta_image', true);

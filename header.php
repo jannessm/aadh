@@ -53,8 +53,8 @@
 			</div></a>
 			<div id="location" class="main-menu-item"></div>
 			<?php
-
-				wp_nav_menu( array( 'menu' => 'main-menu' , 'theme_location' => 'main-menu', 'walker' => new WP_Custom_Walker('main-menu', array('main-menu-item'), false), 'items_wrap' => '%3$s' ));
+				$main_walker = new WP_Custom_Walker('main-menu', array('main-menu-item'), false);
+				wp_nav_menu( array( 'menu' => 'main-menu' , 'theme_location' => 'main-menu', 'walker' => $main_walker, 'items_wrap' => '%3$s' ));
 			?>
 
 			<div id="header-content"><?php echo $text; ?></div>
@@ -76,18 +76,20 @@
 			wp_nav_menu( array( 'menu' => 'collapse-menu', 'theme_location' => 'header-collapse', 'walker' => $collapse_walker, 'items_wrap' => '%3$s') );
 		echo '<div id="social-medias-collapse">';
 			 $options = get_option('footer_theme_options');
+			
+			if (!!$options) {
+				$socials = array(
+						'facebook' => array('facebook_bool', 'facebook_link'),
+						'youtube' => array('youtube_bool', 'youtube_link'),
+						'email' => array('email_bool', 'email_link'),
+						'own' => array('own_bool', 'own_link')
+				 );
 
-			 $socials = array(
-			 		'facebook' => array('facebook_bool', 'facebook_link'),
-			 		'youtube' => array('youtube_bool', 'youtube_link'),
-			 		'email' => array('email_bool', 'email_link'),
-			 		'own' => array('own_bool', 'own_link')
-			 );
-
-			 foreach ($socials as $key => $value) {
-			 	if(array_key_exists($value[0], $options) && strcmp($options[$value[0]], $key)==0)
-			 		echo '<a href="'.$options[$value[1]].'" target="_blank"><div id="'.$key.'_collapse"></div></a>';
-			 }
+				 foreach ($socials as $key => $value) {
+					if(array_key_exists($value[0], $options) && strcmp($options[$value[0]], $key)==0)
+						echo '<a href="'.$options[$value[1]].'" target="_blank"><div id="'.$key.'_collapse"></div></a>';
+				 }	
+			}
 			?>
 		</div>
 		</div>
