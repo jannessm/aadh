@@ -14,7 +14,6 @@
 			
 			if(!is_array($item_classes)) {
 				$item_classes = array($item_classes);
-				var_dump($item_classes);
 			}
 			$this->item_classes = $item_classes;
 		}
@@ -70,9 +69,8 @@
 			$classes[] = 'menu-item-' . $item->ID;
 			if (!empty($this->item_classes)) {
 				$classes[] = $this->item_classes[$depth];
-			} else {
-				var_dump($this->item_classes);
 			}
+
 			/**
 			 * Filters the arguments for a single nav menu item.
 			 *

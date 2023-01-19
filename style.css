@@ -189,13 +189,13 @@ hr{
 		top: 0px;
 		left: 30px;
 		height: 110px;
-		width: 250px;
+		width: 110px;
 		background: center center no-repeat;
 		background-size: contain;
 	}
 
 	@media all and (max-width: 1080px){
-		.menu-main-menu-container, #location{
+		.menu-main-container, #location{
 	        display: none !important;
 	    }
 	    #header-collapse-icon{
@@ -213,7 +213,7 @@ hr{
 	    	margin: 4% !important;
 	    }
 	}
-	.menu-main-menu-container{
+	.menu-main-container{
 		width: 80%;
 		margin: 0 auto;
 		float: right;
@@ -235,6 +235,9 @@ hr{
 	#header .main-menu-item:hover{
 		opacity: 0.6;
 		border-bottom: 2px solid rgba(255,255,255,0.6);
+	}
+	#header .main-menu-item.current-menu-item{
+		border-bottom: 2px solid rgb(255,255,255);
 	}
 	#location{
 		display: inherit;
@@ -579,17 +582,20 @@ hr{
 	}
 	#pray{
 		box-sizing: border-box;
-		height: 200px;
-		background: #eee url('../../uploads/2016/12/pray.jpeg') no-repeat center;
+		background-blend-mode: color;
+		background: rgba(0,0,0,0.2) url(../../uploads/2023/01/pray-scaled.jpeg) no-repeat center;
+		display: flex;
+		justify-content: center;
+		align-content: stretch;
+		flex-wrap: wrap;
+		text-align: center;
+		align-items: center;
 	}
 	#pray h2{
-		padding: calc(200px / 3);
 		text-align: center;
 		color: white;
-		width: 100%;
-		height: 200px;
+		padding: 24px;
 		box-sizing: border-box;
-		background: rgba(0,0,0,0.2);
 	}
 	#pray h2::after {
 		display: none;
@@ -750,22 +756,3 @@ hr{
 		margin-left: auto;
 		margin-right: auto;
 	}
-.dietmar{
-  background: url('https://sta-licht.de/wp-content/uploads/2017/10/Dietmar-1024x768.jpg') no-repeat center !important;
-  background-size: cover !important;
-}
-
-.stephan{
-  background: url('https://sta-licht.de/wp-content/uploads/2017/10/IMG_5467b.jpg-1024x682.jpeg') no-repeat center !important;
-  background-size: cover !important;
-}
-
-.bernd{
-  background: url('https://sta-licht.de/wp-content/uploads/2017/10/DSC9332-1024x683.jpg') no-repeat center !important;
-  background-size: cover !important;
-}
-
-.christel{
-  background: url('https://sta-licht.de/wp-content/uploads/2017/10/DSC9303-1024x683.jpg') no-repeat center !important;
-  background-size: cover !important;
-}

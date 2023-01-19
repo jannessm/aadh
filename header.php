@@ -22,7 +22,7 @@
 		<?php
 			global $wp_query;
 			$img = get_post_meta($post->ID, 'aadh_header_img', true);
-			$event_img = get_post_meta($post->ID, '_ad_ev_meta_image', true);
+			$event_img = get_post_meta($post->ID, '_ad_ev_meta_image_id', true);
 			$img_id = !!$event_img ? $event_img : $img;
 	
 			$brightness = get_post_meta($post->ID, 'aadh_brightness', true);
@@ -73,7 +73,7 @@
 		<div id="collapse-menu-wrapper">
 		<?php
 			$collapse_walker = new WP_Custom_Walker('collapse-menu', array('collapse-menu-item-0', 'collapse-menu-item-1'), true);
-			wp_nav_menu( array( 'menu' => 'collapse-menu', 'theme_location' => 'header-collapse', 'walker' => $collapse_walker, 'items_wrap' => '%3$s') );
+			wp_nav_menu( array( 'menu' => 'collapse-menu', 'theme_location' => 'collapse-menu', 'walker' => $collapse_walker, 'items_wrap' => '%3$s') );
 		echo '<div id="social-medias-collapse">';
 			 $options = get_option('footer_theme_options');
 			
